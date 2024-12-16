@@ -28,16 +28,16 @@
 @endsection
 
 @section('js')
-<script>
+<script> // generate pdf report
 document.getElementById('generateReport').addEventListener('click', function () {
     let startDate = document.getElementById('startDate').value;
     let endDate = document.getElementById('endDate').value;
 
-    fetch('{{ route("sales.generateReport") }}', {
+    fetch('{{ route("sales.generateReport") }}', { // Post request made by API to sales.generatereport
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json',
-            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+            'Content-Type': 'application/json', // data of the report is send into JSON format
+            'X-CSRF-TOKEN': '{{ csrf_token() }}' // CRSF attacks prevention , laravel requires this
         },
         body: JSON.stringify({ start_date: startDate, end_date: endDate })
     })
@@ -48,7 +48,7 @@ document.getElementById('generateReport').addEventListener('click', function () 
     });
 });
 
-document.getElementById('downloadPdf').addEventListener('click', function () {
+document.getElementById('downloadPdf').addEventListener('click', function () { // get event to download pdf
     window.location.href = '{{ route("sales.downloadReport") }}?start_date=' +
         document.getElementById('startDate').value + '&end_date=' + document.getElementById('endDate').value;
 });
