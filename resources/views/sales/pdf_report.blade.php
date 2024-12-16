@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Sales Report</title>
+    <title>Sales Report</title> // dynamic sales report making , html template
     <style>
         body { font-family: Arial, sans-serif; }
         .header, .footer { text-align: center; }
@@ -29,7 +29,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($sales as $sale)
+            @foreach ($sales as $sale) // dynamic sales data per sale set into table
             <tr>
                 <td>{{ $sale->sale_id }}</td>
                 <td>{{ $sale->user->first_name ?? 'No User' }}</td>
