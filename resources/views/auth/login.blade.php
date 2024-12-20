@@ -26,6 +26,7 @@
                             <div class="card-body pt-1">
                                 <form method="POST" action="{{ route('login') }}">
                                     @csrf
+                                    /* the user is required to enter an email and password in order to login to his account */
                                     <fieldset class="form-label-group form-group position-relative has-icon-left">
                                         <input id="user-name" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="Email">
                                         <div class="form-control-position">
